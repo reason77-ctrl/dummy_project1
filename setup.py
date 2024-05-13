@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     include_package_data= True,
     name = "package_reason",
-    version= "2.1.0",
+    version= "2.5.0",
     description= "Package_reason calculator module",
     url = '',
     author= 'Reason',

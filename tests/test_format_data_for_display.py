@@ -1,5 +1,5 @@
 import pytest
-from package_reason.format_data import format_data_for_display, format_data_for_excel
+from package_reason.format_data import format_data_for_display
 
 @pytest.fixture
 def example_people_data():

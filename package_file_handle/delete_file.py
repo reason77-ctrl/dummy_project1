@@ -1,25 +1,39 @@
 import os
 import shutil
-import glob
-import fnmatch
 
-path = input("Enter Directory Path: ")
-list_of_fileFolder = os.listdir(path)
 
-for file_folder in list_of_fileFolder:
-    files = fnmatch.fnmatch(file_folder, '*.*')
-    if files:
-        file_name = input("Enter File Name: ")
-        os.remove(file_name)
-            # os.remove(file_name)
-    # print(file_folder)
-    # name = input("Enter file name or directory: ")
-    # extension = os.path.splitext(file_folder)
-    # if os.path.isfile(name):
-    #     os.remove(name)
-    # elif os.path.isdir(name):
-    #     os.rmdir(name)
+def delete_file():
+    directory = input("Enter Directory path: ")
+    file_name = input("Enter File Name: ")
+    file_path = os.path.join(directory, file_name)
 
-    # else:
-    #     print(f'Error: {name} not exist')
+    try:
+        if os.path.exists(file_path):
+            os.remove(file_path)
+            print("File Deleted.")
+        else:
+            print(f"File '{file_path}' not found.")
+    except PermissionError:
+        print(f"Permission denied: Unable to delete '{file_path}'.")
+
+    except Exception as e:
+        print(f"An error occurred while deleting the file '{file_path}': {e}")
+
+
+
+
+def delete_folder():
+    directory = input("Enter Directory path: ")
+    folder_name = input("Enter Folder Name: ")
+    folder_path = os.path.join(directory, folder_name)
+
+    try:
+        if os.path.exists(folder_path):
+            shutil.rmtree(folder_path)
+            print(f"{folder_name} folder deleted.")
+        else:
+            print(f"Folder '{folder_path}' not found.")
+
+    except OSError as e:
+        print(f'Error: {folder_path} : {e.strerror}')
 

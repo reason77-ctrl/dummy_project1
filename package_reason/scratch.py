@@ -4,7 +4,7 @@ import requests
 
 response = requests.get("https://jsonplaceholder.typicode.com/todos")
 todos = json.loads(response.text)
-print(todos)
+
 
 # Map of userId to number of complete TODOs for that user
 todos_by_user = {}
@@ -23,8 +23,10 @@ for todo in todos:
 top_users = sorted(todos_by_user.items(), 
                    key=lambda x: x[1], reverse=True)
 
+
 # Get the maximum number of complete TODOs.
 max_complete = top_users[0][1]
+
 # Create a list of all users who have completed
 # the maximum number of TODOs.
 users = []
@@ -32,6 +34,7 @@ for user, num_complete in top_users:
     if num_complete < max_complete:
         break
     users.append(str(user))
+
 
 max_users = " and ".join(users)
 

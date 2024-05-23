@@ -31,6 +31,7 @@ for user, num_not_completed in top_users:
         users.append(str(user))
 
 
+
 def keep(todo):
     is_complete_false = todo["completed"] == False
     has_count = str(todo["userId"]) in users
